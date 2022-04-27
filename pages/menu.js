@@ -17,6 +17,9 @@ export default function menu() {
 
 class ShowExamList extends React.Component {
 
+    showExam(code) {
+    }
+
     getExams() {
         let examList = [];
         for (let i = 0; i < testdatabase.length; i++) {
