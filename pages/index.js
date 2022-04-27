@@ -38,8 +38,8 @@ let handleSubmit = async e => {
   }
   let login = await fetch("/api/login", config);
   const resultLogin = await login.json();
-  console.log(resultLogin);
-  if (resultLogin) {
+  console.log(resultLogin.response);
+  if (resultLogin.response) {
     Router.push('/menu');
   }
 }

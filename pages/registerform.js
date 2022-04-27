@@ -45,7 +45,7 @@ let handleSubmit = async e => {
     }
     let register = await fetch("/api/register", config);
     const resultRegister = await register.json();
-    console.log(resultRegister);
+    console.log(resultRegister.response);
 }
 
 let handleInputChange = async e => {
