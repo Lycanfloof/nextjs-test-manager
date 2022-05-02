@@ -38,7 +38,7 @@ export default function register() {
               </Form>
               <br/>
               <div className="d-grid gap-2">
-                <Button variant="dark" size="lg" onClick={redirectToLogInForm}>Log in!</Button>
+                <Button variant="outline-dark" size="lg" onClick={redirectToLogInForm}>Log in!</Button>
               </div>
             </Card.Body>
           </Card>
