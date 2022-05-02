@@ -1,5 +1,4 @@
 import Router from 'next/router'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
@@ -11,35 +10,30 @@ let state = {
 
 export default function login() {
   return (
-    <div class="center positioned">
+    <div className="center positioned">
       <Card style={{ width: '30rem' }}>
-          <Card.Body>
-            <Card.Title class="padd">Welcome back! </Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">Please log in</Card.Subtitle>
+        <Card.Body>
+          <Card.Title>Sign in to TesMa!</Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">
+            <Form.Text className="text-muted">
+              C'mon, don't be shy!
+            </Form.Text>
+          </Card.Subtitle>
+          <Form onSubmit={handleSubmit}>
+            <Form.Control type="text" required placeholder="Username" name="username" onChange={handleInputChange}></Form.Control>
             <br />
-            <Form onSubmit={handleSubmit}>
-              <Form.Label>Username</Form.Label>
-              <Form.Control type="text" required placeholder="username" name="username" onChange={handleInputChange}></Form.Control>
-              <Form.Text className="text-muted">
-              Come on, don't be shy
-              </Form.Text>
-
-              <br />
-              <Form.Label>password</Form.Label>
-              <Form.Control type="password" required placeholder="password" name="password" onChange={handleInputChange}></Form.Control>
-              <br />
-
-              <div className="d-grid gap-2">
-              <Button variant="dark" size="lg" type="submit">Log in!</Button>
-              </div>
-              <br />
-            
-            </Form>
+            <Form.Control type="password" required placeholder="Password" name="password" onChange={handleInputChange}></Form.Control>
+            <br />
             <div className="d-grid gap-2">
-            <Button variant="outline-dark" size="lg" onClick={redirectToRegisterForm}>Sign in!</Button>
+              <Button variant="dark" size="lg" type="submit">Sign in!</Button>
             </div>
-          </Card.Body>
-        </Card>
+            <br />
+          </Form>
+          <div className="d-grid gap-2">
+            <Button variant="outline-dark" size="lg" onClick={redirectToRegisterForm}>Sign up!</Button>
+          </div>
+        </Card.Body>
+      </Card>
     </div>
   )
 }
@@ -62,6 +56,7 @@ let handleSubmit = async e => {
   const resultLogin = await login.json();
   console.log(resultLogin.response);
   if (resultLogin.response) {
+    const store = await fetch("/api/storeuser", config);
     Router.push('/menu');
   }
 }
