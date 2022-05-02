@@ -1,4 +1,8 @@
 export default function Exam({ examData }) {
+
+  //This doesn't work with tests created with the program. We gotta check it out!
+  //We also want to display the correct amount of questions.
+
   let array = [];
 
   for (let i = 0; i < examData.questions.length; i++) {

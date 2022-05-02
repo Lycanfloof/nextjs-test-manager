@@ -2,7 +2,6 @@ import React from 'react'
 import Router from 'next/router'
 
 let handleSubmit = async (examName, accessCode, questionList) => {
-    //We need to implement the submit logic.
     event.preventDefault();
     let state = {
         examName: examName,
@@ -42,7 +41,7 @@ class ShowExamForm extends React.Component {
     }
 
     addQuestion = () => {
-        //We need to implement correct answers.
+        //We need to implement correct answers. IMPORTANT: Correct answers go inside the questions array.
         let questions = [...this.state.questionUI]
         questions.push(
             <div key={"Q" + questions.length + 1}>
