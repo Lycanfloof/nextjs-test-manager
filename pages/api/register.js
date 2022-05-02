@@ -7,7 +7,7 @@ export default async function handler(req, res) {
         try {
             let canRegister = false;
             let userIndex = userdatabase.findIndex(element => element.username == body.username && element.password == body.password);
-            if(userIndex == -1){
+            if (userIndex == -1) {
                 canRegister = true;
                 userdatabase.push({
                     username: body.username,
