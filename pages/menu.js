@@ -15,6 +15,7 @@ export default function menu({ testdatabase }) {
 }
 
 menu.getInitialProps = async () => {
+    //It would be preferable to find a way to put the relative path in this fetch().
     const database = await fetch("http://localhost:3000/api/obtaintestdatabase");
     const result = await database.json();
     return { testdatabase: result }
@@ -27,6 +28,7 @@ class ShowExamList extends React.Component {
     }
 
     showExam(code) {
+        Router.push("http://localhost:3000/exams/" + code);
     }
 
     getExams() {
