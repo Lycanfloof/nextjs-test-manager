@@ -3,6 +3,7 @@ import Router from 'next/router'
 
 let handleSubmit = async (examName, accessCode, questionList) => {
     //We need to implement the submit logic.
+    event.preventDefault();
     let state = {
         examName: examName,
         accessCode: accessCode,
@@ -124,9 +125,13 @@ class ShowExamForm extends React.Component {
         }
     }
 
+    goBack = async e => {
+        Router.push("http://localhost:3000/menu");
+    }
+
     render() {
         return (
-            <form>
+            <form onSubmit={() => handleSubmit(this.state.examName, this.state.accessCode, this.state.questionList)}>
                 <div>
                     <input onChange={this.handleInfoChange} required placeholder="Exam name" type="text" name="examName"></input>
                 </div>
@@ -137,7 +142,8 @@ class ShowExamForm extends React.Component {
                 <br />
                 {this.state.questionUI}
                 <button onClick={() => this.addQuestion()}>+Question</button>
-                <button type="submit" onSubmit={() => handleSubmit(this.state.examName, this.state.accessCode, this.state.questionList)}>Create Exam</button>
+                <button type="submit">Create Exam</button>
+                <button onClick={() => this.goBack()}>Go back</button>
             </form>
         )
     }
