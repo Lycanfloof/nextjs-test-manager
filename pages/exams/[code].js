@@ -1,4 +1,3 @@
-import Router from 'next/router'
 export default function Exam({ examData }) {
   let array = [];
 
@@ -37,9 +36,10 @@ export default function Exam({ examData }) {
   )
 }
 
-Exam.getInitialProps = async () => {
-  //const path = Router.pathname;
-  const exam = await fetch("http://localhost:3000/api/obtaintest/AAAA");
+Exam.getInitialProps = async (context) => {
+  const path = context.asPath.split('/'); 
+  console.log(path[path.length-1]);
+  const exam = await fetch("http://localhost:3000/api/obtaintest/" + path[path.length-1]);
   const result = await exam.json();
   return { examData: result.response }
 }
