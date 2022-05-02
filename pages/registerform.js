@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 let state = {
   username: "",
   password: "",
-  accountType: ""
+  accountType: "Teacher"
 }
 
 export default function register() {
@@ -27,8 +27,8 @@ export default function register() {
             <Form.Control required placeholder="Password" type="password" name="password" onChange={handleInputChange}></Form.Control>
             <br />
             <Form.Select required aria-label="Default select example" name="account-type" onChange={handleInputChange}>
-              <option value="1">Teacher</option>
-              <option value="2">Student</option>
+              <option value="Teacher">Teacher</option>
+              <option value="Student">Student</option>
             </Form.Select>
             <br />
             <div className="d-grid gap-2">
