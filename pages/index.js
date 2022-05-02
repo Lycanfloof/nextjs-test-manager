@@ -1,4 +1,8 @@
 import Router from 'next/router'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Form from 'react-bootstrap/Form';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
 let state = {
   username: "",
@@ -7,17 +11,35 @@ let state = {
 
 export default function login() {
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>Username:</label>
-        <input required placeholder="username" type="text" name="username" onChange={handleInputChange}></input>
-        <br />
-        <label>Password:</label>
-        <input required placeholder="password" type="password" name="password" onChange={handleInputChange}></input>
-        <br />
-        <button type="submit">Log in!</button>
-      </form>
-      <button onClick={redirectToRegisterForm}>Sign in!</button>
+    <div class="center positioned">
+      <Card style={{ width: '30rem' }}>
+          <Card.Body>
+            <Card.Title class="padd">Welcome back! </Card.Title>
+            <Card.Subtitle className="mb-2 text-muted">Please log in</Card.Subtitle>
+            <br />
+            <Form onSubmit={handleSubmit}>
+              <Form.Label>Username</Form.Label>
+              <Form.Control type="text" required placeholder="username" name="username" onChange={handleInputChange}></Form.Control>
+              <Form.Text className="text-muted">
+              Come on, don't be shy
+              </Form.Text>
+
+              <br />
+              <Form.Label>password</Form.Label>
+              <Form.Control type="password" required placeholder="password" name="password" onChange={handleInputChange}></Form.Control>
+              <br />
+
+              <div className="d-grid gap-2">
+              <Button variant="dark" size="lg" type="submit">Log in!</Button>
+              </div>
+              <br />
+            
+            </Form>
+            <div className="d-grid gap-2">
+            <Button variant="outline-dark" size="lg" onClick={redirectToRegisterForm}>Sign in!</Button>
+            </div>
+          </Card.Body>
+        </Card>
     </div>
   )
 }
