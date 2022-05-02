@@ -15,7 +15,7 @@ export default function menu({ testdatabase }) {
 }
 
 menu.getInitialProps = async () => {
-    const database = await fetch("http://localhost:3000/api/obtaintestdatabase");
+    const database = await fetch("/api/obtaintestdatabase");
     const result = await database.json();
     return { testdatabase: result }
 }
