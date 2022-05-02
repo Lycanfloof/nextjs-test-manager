@@ -4,13 +4,16 @@ import React from 'react'
 export default function menu({ testdatabase }) {
     return (
         <div>
-            <label>
-                Exam list:
-            </label>
+            <div>
+                <label>
+                    Exam list:
+                </label>
+            </div>
+            <br />
             <div id="exam-list">
                 <ShowExamList testdatabase={testdatabase.response} />
             </div>
-
+            <br />
             <div id="user-info">
                 <ShowUser />
             </div>
@@ -57,6 +60,7 @@ class ShowExamList extends React.Component {
         return (
             <div>
                 {this.getExams()}
+                <br />
                 <button onClick={() => this.addExam()}>+</button>
             </div>
         )
@@ -76,7 +80,7 @@ class ShowUser extends React.Component {
     render() {
         return (
             <div>
-                <button onClick={this.showUser}>User info</button>
+                <button onClick={this.showUser}>User Information</button>
             </div>
         )
     }

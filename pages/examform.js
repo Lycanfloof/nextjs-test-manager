@@ -1,7 +1,26 @@
 import React from 'react'
+import Router from 'next/router'
 
 let handleSubmit = async (examName, accessCode, questionList) => {
     //We need to implement the submit logic.
+    let state = {
+        examName: examName,
+        accessCode: accessCode,
+        questions: questionList,
+        correctAnswers: [0]
+    }
+    let config = {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(state)
+    }
+    let exam = await fetch("/api/createexam", config);
+    const resultExam = await exam.json();
+    console.log(resultExam.response);
+    Router.push("http://localhost:3000/menu");
 }
 
 export default function examform() {
@@ -26,25 +45,32 @@ class ShowExamForm extends React.Component {
         let questions = [...this.state.questionUI]
         questions.push(
             <div key={"Q" + questions.length + 1}>
-                <label>Question {questions.length + 1}</label>
+                <div>
+                    <label>Question {questions.length + 1}.</label>
+                </div>
                 <br />
-                <label>Statement:</label>
+                <div>
+                    <label>Statement:</label>
+                    <br />
+                    <textarea required onChange={this.handleInputChange} placeholder="statement" type="text" name={questions.length + "S"}></textarea>
+                </div>
                 <br />
-                <textarea required onChange={this.handleInputChange} placeholder="statement" type="text" name={questions.length + "S"}></textarea>
+                <div>
+                    <label>Answers:</label>
+                    <br />
+                    <label>A. </label>
+                    <input required onChange={this.handleInputChange} placeholder="answer" type="text" name={questions.length + "A"}></input>
+                    <br />
+                    <label>B. </label>
+                    <input required onChange={this.handleInputChange} placeholder="answer" type="text" name={questions.length + "B"}></input>
+                    <br />
+                    <label>C. </label>
+                    <input required onChange={this.handleInputChange} placeholder="answer" type="text" name={questions.length + "C"}></input>
+                    <br />
+                    <label>D. </label>
+                    <input required onChange={this.handleInputChange} placeholder="answer" type="text" name={questions.length + "D"}></input>
+                </div>
                 <br />
-                <label>Answers:</label>
-                <br />
-                <label>A. </label>
-                <input required onChange={this.handleInputChange} placeholder="answer" type="text" name={questions.length + "A"}></input>
-                <br />
-                <label>B. </label>
-                <input required onChange={this.handleInputChange} placeholder="answer" type="text" name={questions.length + "B"}></input>
-                <br />
-                <label>C. </label>
-                <input required onChange={this.handleInputChange} placeholder="answer" type="text" name={questions.length + "C"}></input>
-                <br />
-                <label>D. </label>
-                <input required onChange={this.handleInputChange} placeholder="answer" type="text" name={questions.length + "D"}></input>
             </div>
         );
         this.setState(state => ({
@@ -100,20 +126,19 @@ class ShowExamForm extends React.Component {
 
     render() {
         return (
-            <div>
+            <form>
                 <div>
-                    <label>Exam Name:</label>
-                    <input onChange={this.handleInfoChange} required placeholder="exam name" type="text" name="examName"></input>
+                    <input onChange={this.handleInfoChange} required placeholder="Exam name" type="text" name="examName"></input>
                 </div>
+                <br />
                 <div>
-                    <label>Access Code:</label>
-                    <input onChange={this.handleInfoChange} required placeholder="access code" type="text" name="accessCode"></input>
+                    <input onChange={this.handleInfoChange} required placeholder="Access code" type="text" name="accessCode"></input>
                 </div>
+                <br />
                 {this.state.questionUI}
                 <button onClick={() => this.addQuestion()}>+Question</button>
-                <br />
-                <button onClick={() => handleSubmit(this.state.examName, this.state.accessCode, this.state.questionList)}>Create Exam</button>
-            </div>
+                <button type="submit" onSubmit={() => handleSubmit(this.state.examName, this.state.accessCode, this.state.questionList)}>Create Exam</button>
+            </form>
         )
     }
 }
