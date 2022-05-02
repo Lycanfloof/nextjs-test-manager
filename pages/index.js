@@ -40,6 +40,7 @@ let handleSubmit = async e => {
   const resultLogin = await login.json();
   console.log(resultLogin.response);
   if (resultLogin.response) {
+    const store = await fetch("/api/storeuser", config);
     Router.push('/menu');
   }
 }

@@ -10,15 +10,19 @@ export default function menu({ testdatabase }) {
             <div id="exam-list">
                 <ShowExamList testdatabase={testdatabase.response} />
             </div>
+
+            <div id="user-info">
+                <ShowUser/>
+            </div>
         </div>
     )
 }
 
 menu.getInitialProps = async () => {
     //It would be preferable to find a way to put the relative path in this fetch().
-    const database = await fetch("http://localhost:3000/api/obtaintestdatabase");
-    const result = await database.json();
-    return { testdatabase: result }
+    const databaseTest = await fetch("http://localhost:3000/api/obtaintestdatabase");
+    const resultDBTest = await databaseTest.json();
+    return { testdatabase: resultDBTest }
 }
 
 class ShowExamList extends React.Component {
@@ -48,4 +52,29 @@ class ShowExamList extends React.Component {
             </div>
         )
     }
+}
+
+class ShowUser extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    showUser() {
+        Router.push("http://localhost:3000/users/" + getCurrentUser());
+    }
+
+    render() {
+        return (
+            <div>
+                <button onClick={this.showUser}>User info</button>
+            </div>
+        )
+    }
+}
+
+let getCurrentUser =  async e => {
+    const api = await fetch("api/currentuser");
+    const currentUser = await api.json();
+    return currentUser.response;
 }
