@@ -19,6 +19,7 @@ export default function Exam({ examData }) {
           <input type="radio" />
           <label name="answerD">{question.options[3]}</label>
         </form>
+        <br />
       </div>
     )
 
@@ -27,9 +28,11 @@ export default function Exam({ examData }) {
 
   return (
     <div>
-      Name: {examData.examName}
-      <br />
-      Code: {examData.accessCode}
+      <div>
+        Name: {examData.examName}
+        <br />
+        Code: {examData.accessCode}
+      </div>
       <br />
       {array}
     </div>

@@ -6,7 +6,7 @@ export default function menu({ testdatabase }) {
         <div>
             <div>
                 <label>
-                    Exam list:
+                    Exam list - Click on 'em!
                 </label>
             </div>
             <br />
