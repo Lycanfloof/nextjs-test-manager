@@ -31,6 +31,10 @@ class ShowExamList extends React.Component {
         super(props);
     }
 
+    addExam() {
+        Router.push("http://localhost:3000/examform/");
+    }
+
     showExam(code) {
         Router.push("http://localhost:3000/exams/" + code);
     }
@@ -40,7 +44,11 @@ class ShowExamList extends React.Component {
         let examList = [];
         for (let i = 0; i < testdatabase.length; i++) {
             examList.push(
-                <div key={testdatabase[i].accessCode}><a onClick={() => this.showExam(testdatabase[i].accessCode)}>{testdatabase[i].examName}</a></div>);
+                <div key={testdatabase[i].accessCode}>
+                    <a onClick={() => this.showExam(testdatabase[i].accessCode)}>
+                        {testdatabase[i].examName}
+                    </a>
+                </div>);
         }
         return examList;
     }
@@ -49,6 +57,7 @@ class ShowExamList extends React.Component {
         return (
             <div>
                 {this.getExams()}
+                <button onClick={() => this.addExam()}>+</button>
             </div>
         )
     }

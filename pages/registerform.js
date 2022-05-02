@@ -75,5 +75,6 @@ let handleInputChange = async e => {
             break;
         case "account-type":
             state.accountType = e.target.value
+            break;
     }
 }
