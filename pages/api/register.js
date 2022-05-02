@@ -21,10 +21,10 @@ export default async function handler(req, res) {
                 });*/
 
                 try {
-                  console.log(body);
+                  
                   //inserts new instance to the USERS table
                   let response = await db.query('INSERT INTO USERS(NAME,PASSWORD,ACCOUNTTYPE) VALUES ($1, $2,$3)',[body.username,body.password,body.accountType])
-                  console.log(response.rows);
+                  
                   res.send({
                     response: "Hey"
                   });

@@ -62,7 +62,9 @@ let handleSubmit = async e => {
   }
   let register = await fetch("/api/register", config);
   const resultRegister = await register.json();
-  console.log(resultRegister.response);
+  if(resultRegister.response){
+    Router.push('/menu');
+  }
 }
 
 let handleInputChange = async e => {
