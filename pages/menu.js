@@ -1,36 +1,26 @@
 import Router from 'next/router'
 import React from 'react'
+import testdatabase from '../data/testdatabase'
 
-export default function menu({ testdatabase }) {
+export default function menu() {
     return (
         <div>
             <label>
                 Exam list:
             </label>
             <div id="exam-list">
-                <ShowExamList testdatabase={testdatabase.response} />
+                <ShowExamList />
             </div>
         </div>
     )
 }
 
-menu.getInitialProps = async () => {
-    const database = await fetch("/api/obtaintestdatabase");
-    const result = await database.json();
-    return { testdatabase: result }
-}
-
 class ShowExamList extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     showExam(code) {
     }
 
     getExams() {
-        let testdatabase = this.props.testdatabase;
         let examList = [];
         for (let i = 0; i < testdatabase.length; i++) {
             examList.push(
