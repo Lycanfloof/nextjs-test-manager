@@ -1,5 +1,4 @@
 import Router from 'next/router';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
@@ -26,7 +25,7 @@ export default function register() {
             <br />
             <Form.Control required placeholder="Password" type="password" name="password" onChange={handleInputChange}></Form.Control>
             <br />
-            <Form.Select required aria-label="Default select example" required name="account-type" onChange={handleInputChange}>
+            <Form.Select required aria-label="Default select example" name="account-type" onChange={handleInputChange}>
               <option value="1">Teacher</option>
               <option value="2">Student</option>
             </Form.Select>

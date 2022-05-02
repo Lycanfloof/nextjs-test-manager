@@ -5,7 +5,7 @@ export default function Exam({ examData }) {
     let question = examData.questions[i];
     let aux = (
       <div key={examData.accessCode + i}>
-        <p>{String.fromCharCode(i+65) + "." + " " + question.statement}</p>
+        <p>{String.fromCharCode(i + 65) + "." + " " + question.statement}</p>
         <form>
           <input type="radio" />
           <label name="answerA">{question.options[0]}</label>
@@ -37,9 +37,9 @@ export default function Exam({ examData }) {
 }
 
 Exam.getInitialProps = async (context) => {
-  const path = context.asPath.split('/'); 
-  console.log(path[path.length-1]);
-  const exam = await fetch("http://localhost:3000/api/obtaintest/" + path[path.length-1]);
+  const path = context.asPath.split('/');
+  console.log(path[path.length - 1]);
+  const exam = await fetch("http://localhost:3000/api/obtaintest/" + path[path.length - 1]);
   const result = await exam.json();
   return { examData: result.response }
 }

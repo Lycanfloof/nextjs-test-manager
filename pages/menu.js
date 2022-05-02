@@ -12,7 +12,7 @@ export default function menu({ testdatabase }) {
             </div>
 
             <div id="user-info">
-                <ShowUser/>
+                <ShowUser />
             </div>
         </div>
     )
@@ -82,7 +82,7 @@ class ShowUser extends React.Component {
     }
 }
 
-let getCurrentUser =  async e => {
+let getCurrentUser = async e => {
     const api = await fetch("api/currentuser");
     const currentUser = await api.json();
     return currentUser.response;
