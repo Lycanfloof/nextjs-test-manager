@@ -37,7 +37,7 @@ menu.getInitialProps = async () => {
     const examsInfo = await examsData.json();
     //console.log(examsInfo);
     
-    console.log(examsInfo.response);
+    //console.log(examsInfo.response);
 
     return { testdatabase: examsInfo.response }
 }

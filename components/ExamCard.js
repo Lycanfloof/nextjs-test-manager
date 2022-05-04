@@ -7,14 +7,14 @@ import { Component } from 'react';
 export default function ExamCard({title, description,code}){
 
   const changeRoute = () =>{
-    console.log('payasa');
+    Router.push("http://localhost:3000/exams/" + code);
   }
 
   return(
     <div>
       <h1>{title}</h1>
       <h4>{description}</h4>
-      <button onClick={changeRoute()}>Solve exam</button>
+      <button onClick={changeRoute}>Solve exam</button>
     </div>
   )
 }

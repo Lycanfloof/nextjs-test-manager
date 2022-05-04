@@ -47,10 +47,10 @@ export default function Exam({ examData }) {
 Exam.getInitialProps = async (context) => {
   const path = context.asPath.split('/');
   let finalPartPath = path[path.length - 1];
-  console.log(finalPartPath);
+  /*console.log(finalPartPath);
 
   const exam = await fetch("http://localhost:3000/api/obtaintest/" + path[path.length - 1]);
-  const result = await exam.json();
+  const result = await exam.json();*/
 
   let examsData = await fetch("http://localhost:3000/api/ExamsDatabase");
   const examsInfo = await examsData.json();
