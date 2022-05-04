@@ -1,13 +1,10 @@
 import Router from 'next/router'
 import { options } from 'pg/lib/defaults'
-import React from 'react'
+import React, { Component } from 'react'
+import ExamList from '../components/ExamList';
 
-let state = {
-  tests: [],
-  questions: [],
-  options: []
-}
 export default function menu({ testdatabase }) {
+    
     return (
         <div>
             <div>
@@ -17,7 +14,8 @@ export default function menu({ testdatabase }) {
             </div>
             <br />
             <div id="exam-list">
-                <ShowExamList testdatabase={testdatabase.response} />
+              {console.log(testdatabase)}
+              <ExamList tests={testdatabase}/>
             </div>
             <br />
             <div id="user-info">
@@ -27,19 +25,21 @@ export default function menu({ testdatabase }) {
     )
 }
 
+
 menu.getInitialProps = async () => {
     //It would be preferable to find a way to put the relative path in this fetch().
-    const databaseTest = await fetch("http://localhost:3000/api/obtaintestdatabase");
-    const resultDBTest = await databaseTest.json();
+    //const databaseTest = await fetch("http://localhost:3000/api/obtaintestdatabase");
+    //const resultDBTest = await databaseTest.json();
     
-    console.log(resultDBTest);
+    //console.log(resultDBTest);
 
     let examsData = await fetch("http://localhost:3000/api/ExamsDatabase");
     const examsInfo = await examsData.json();
-    //console.log("************************");
-    console.log(examsInfo);
+    //console.log(examsInfo);
+    
+    console.log(examsInfo.response);
 
-    return { testdatabase: resultDBTest }
+    return { testdatabase: examsInfo.response }
 }
 
 class ShowExamList extends React.Component {

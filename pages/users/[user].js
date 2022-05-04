@@ -14,6 +14,8 @@ let goBack = () => {
     Router.push("http://localhost:3000/menu");
 }
 
+
+
 User.getInitialProps = async () => {
     let currentUser = await fetch("http://localhost:3000/api/currentuser");
     currentUser = await currentUser.json();
