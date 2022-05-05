@@ -2,14 +2,15 @@ import ExamCard from "./ExamCard";
 
 export default function ExamList({tests}){
   return(
-    <div>
+    <div >
       <ul>
         {tests.map((test)=>(
-          <li key={test.code}>
+          <div key={test.code} >
             <ExamCard {...test} />
-          </li>
+          </div>
         ))}
       </ul>
+      <br/>
     </div>
   )
 }

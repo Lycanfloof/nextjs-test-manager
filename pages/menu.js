@@ -2,15 +2,20 @@ import Router from 'next/router'
 import { options } from 'pg/lib/defaults'
 import React, { Component } from 'react'
 import ExamList from '../components/ExamList';
+import Button from 'react-bootstrap/Button';
 
 export default function menu({ testdatabase }) {
-    
     return (
-        <div>
+        <div className=''>
             <div>
-                <label>
+            <br />
+                <h1 className='leftmarg-1'>
                     Exam list - Click on 'em!
-                </label>
+                </h1>
+            </div>
+            <br />
+            <div id="user-info">
+                <ShowUser />
             </div>
             <br />
             <div id="exam-list">
@@ -18,9 +23,7 @@ export default function menu({ testdatabase }) {
               <ExamList tests={testdatabase}/>
             </div>
             <br />
-            <div id="user-info">
-                <ShowUser />
-            </div>
+            
         </div>
     )
 }
@@ -94,7 +97,7 @@ class ShowUser extends React.Component {
     render() {
         return (
             <div>
-                <button onClick={this.showUser}>User Information</button>
+                <Button className='leftmarg' variant='outline-dark' onClick={this.showUser}>User Information</Button>
             </div>
         )
     }

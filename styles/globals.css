@@ -26,3 +26,22 @@ a {
 .padd {
   padding: 5em;
 }
+
+.smallpadd {
+  padding: 1em;
+}
+
+.leftmarg{
+  margin-left: 3em;
+}
+
+.leftmarg-1{
+  margin-left: 1.15em;
+}
+
+.kinda_positioned{
+  position: fixed;
+  margin-top: 10em;
+  margin-left: 25%;
+}
+
