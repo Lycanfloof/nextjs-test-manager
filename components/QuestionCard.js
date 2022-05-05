@@ -7,10 +7,21 @@ export default function QuestionCard({questionStatement, option1, option2, optio
   return(
     <div>
       <h1>{questionStatement}</h1>
-      <h6>{option1}</h6>
-      <h6>{option2}</h6>
-      <h6>{option3}</h6>
-      <h6>{option4}</h6>
+      <form>
+        <input type="radio" id="answer1" name="fav_language" value="HTML"></input>
+        <label for="html">{option1}</label><br></br>
+
+        <input type="radio" id="answer2" name="fav_language" value="HTML"></input>
+        <label for="answer2">{option2}</label><br></br>
+
+        <input type="radio" id="answer3" name="fav_language" value="HTML"></input>
+        <label for="answer3">{option3}</label><br></br>
+
+        <input type="radio" id="answer4" name="fav_language" value="HTML"></input>
+        <label for="answer4">{option4}</label><br></br>
+
+      </form>
+      
     </div>
   )
 }
