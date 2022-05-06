@@ -3,8 +3,8 @@ import Router from 'next/router'
 export default function User({ userData }) {
     return (
         <div>
-            <p>Hey {userData.username}!</p>
-            <p>You're a {userData.accountType}!</p>
+            <p>Hey {userData.name}!</p>
+            <p>You're a {userData.accounttype}!</p>
             <button onClick={() => goBack()}>Go back</button>
         </div>
     )
@@ -19,8 +19,10 @@ let goBack = () => {
 User.getInitialProps = async () => {
     let currentUser = await fetch("http://localhost:3000/api/currentuser");
     currentUser = await currentUser.json();
+    console.log("******");
     console.log(currentUser);
+
     const user = await fetch("http://localhost:3000/api/obtainuser/" + currentUser.response.currentUser);
     const result = await user.json();
-    return { userData: result.response }
+    return { userData: currentUser.response }
 }
