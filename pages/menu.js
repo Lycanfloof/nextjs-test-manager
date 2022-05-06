@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 
 export default function menu({ testdatabase }) {
 
+
     return (
         <div className=''>
             <div>
@@ -17,6 +18,8 @@ export default function menu({ testdatabase }) {
             <br />
             <div id="user-info">
                 <ShowUser />
+
+                <ShowExamList />
             </div>
             <br />
             <div id="exam-list">
@@ -75,11 +78,11 @@ class ShowExamList extends React.Component {
     }
 
     render() {
+      
         return (
             <div>
-                {this.getExams()}
                 <br />
-                <button onClick={() => this.addExam()}>+</button>
+                <Button className='leftmarg2' variant="outline-dark" size="sm" onClick={() => this.addExam()}>Create exam</Button>
             </div>
         )
     }
